@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile App Development Inquiry</title>
+    <style>
+        /* Base styles from previous templates */
+        .platform-badge {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #f1f5f9;
+            border-radius: 20px;
+            margin: 5px;
+            font-size: 14px;
+        }
+        .app-feature {
+            padding: 15px;
+            margin: 10px 0;
+            background-color: #f8fafc;
+            border-left: 4px solid #db2777;
+            border-radius: 4px;
+        }
+        .timeline-step {
+            padding: 15px;
+            position: relative;
+        }
+        .timeline-dot {
+            width: 12px;
+            height: 12px;
+            background-color: #db2777;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <center class="wrapper">
+        <table class="main" width="100%">
+            <!-- HEADER WITH PINK GRADIENT -->
+            <tr>
+                <td style="padding: 0;">
+                    <table width="100%">
+                        <tr>
+                            <td style="background: linear-gradient(135deg, #db2777 0%, #9d174d 100%); padding: 40px 20px; text-align: center; border-radius: 8px 8px 0 0;">
+                                <img src="https://anantsoftcomputing.com/assets/ASC-w5eBwADH.png" alt="Logo" width="200" style="margin-bottom: 20px;">
+                                <h1 style="color: #ffffff; margin: 0; font-size: 28px;">Mobile App Development</h1>
+                                <p style="color: #ffffff; margin: 10px 0 0;">Bringing Your App Idea to Life</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>   
+
+            <!-- GREETING -->
+            <tr>
+                <td style="padding: 30px 30px 20px;">
+                    <h2 style="margin: 0; color: #1e293b;">Dear {{ name }},</h2>
+                    <p style="margin: 20px 0;">Thank you for considering us for your mobile app development project. We're excited to help transform your vision into a successful mobile application.</p>
+                </td>
+            </tr>
+
+            <!-- PROJECT DETAILS -->
+            <tr>
+                <td style="padding: 0 30px;">
+                    <table width="100%" style="background-color: #f8fafc; border-radius: 6px;">
+                        <tr>
+                            <td style="padding: 20px;">
+                                <h3 style="margin: 0 0 15px; color: #1e293b;">Project Overview</h3>
+                                <p style="margin: 5px 0;"><strong>Company:</strong> {{ company }}</p>
+                                <p style="margin: 5px 0;"><strong>Timeline:</strong> {{ timeline }}</p>
+                                <p style="margin: 5px 0;"><strong>Budget Range:</strong> {{ budget }}</p>
+                                <p style="margin: 5px 0;"><strong>Platform:</strong> {{ platforms }}</p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <!-- PLATFORMS & TECHNOLOGIES -->
+            <tr>
+                <td style="padding: 30px;">
+                    <h3 style="color: #1e293b; text-align: center;">Development Platforms</h3>
+                    <table width="100%" style="text-align: center;">
+                        <tr>
+                            <td width="50%" style="padding: 15px;">
+                                <img height="300px" width="500px" src="https://media.geeksforgeeks.org/wp-content/uploads/20230617194030/Getting-Started-with-iOS-Development.webp" alt="iOS" width="40" style="margin-bottom: 10px;">
+                                <h4 style="margin: 10px 0; color: #1e293b;">iOS Development</h4>
+                                {% for tech in ios_technologies %}
+                                    <div class="platform-badge">{{ tech }}</div>
+                                {% endfor %}
+                            </td>
+                            <td width="50%" style="padding: 15px;">
+                                <img height="300px" width="500px"  src="https://www.androiddeveloper.co.in/blog/wp-content/uploads/2016/03/Android-App-Development-2-768x284.jpg" alt="Android" width="40" style="margin-bottom: 10px;">
+                                <h4 style="margin: 10px 0; color: #1e293b;">Android Development</h4>
+                                {% for tech in android_technologies %}
+                                    <div class="platform-badge">{{ tech }}</div>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" style="padding: 15px;">
+                                <h4 style="margin: 10px 0; color: #1e293b;">Cross-Platform Solutions</h4>
+                                {% for tech in cross_platform_technologies %}
+                                    <div class="platform-badge">{{ tech }}</div>
+                                {% endfor %}
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <!-- APP FEATURES -->
+            <tr>
+                <td style="padding: 0 30px;">
+                    <h3 style="color: #1e293b;">Common App Features We Implement</h3>
+                    {% for feature in app_features %}
+                    <div class="app-feature">
+                        <h4 style="margin: 0;">{{ feature.name }}</h4>
+                        <p style="margin: 5px 0; color: #475569;">{{ feature.description }}</p>
+                    </div>
+                    {% endfor %}
+                </td>
+            </tr>
+
+            <!-- DEVELOPMENT PROCESS -->
+            <tr>
+                <td style="padding: 30px;">
+                    <h3 style="color: #1e293b; text-align: center;">Development Timeline</h3>
+                    <table width="100%">
+                        {% for step in timeline_steps %}
+                        <tr>
+                            <td class="timeline-step">
+                                <span class="timeline-dot"></span>
+                                <strong>{{ step.week }}:</strong> {{ step.activity }}
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                </td>
+            </tr>
+
+            <!-- CTA -->
+            <!--<tr>-->
+            <!--    <td style="padding: 30px; text-align: center;">-->
+            <!--        <a href="{{ consultation_link }}" style="background-color: #db2777; color: #ffffff; text-decoration: none; padding: 12px 30px; border-radius: 6px; font-weight: bold; display: inline-block;">Schedule App Consultation</a>-->
+            <!--    </td>-->
+            <!--</tr>-->
+
+            <!-- CONTACT INFO -->
+            <tr>
+                <td style="padding: 30px;">
+                    <table width="100%" style="background-color: #f8fafc; border-radius: 6px;">
+                        <tr>
+                            <td style="padding: 20px; text-align: center;">
+                                <h3 style="margin: 0 0 10px; color: #1e293b;">Your Mobile App Team</h3>
+                                <p style="margin: 5px 0;">Mobile Development Team</p>
+                                <p style="margin: 5px 0;">Email: support@anantsoftcomputing.com</p>
+                                <p style="margin: 5px 0;">Phone: +91 96385 44455 </p>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+
+            <!-- FOOTER -->
+            <tr>
+                <td style="background-color: #9d174d; color: #ffffff; padding: 30px; text-align: center; border-radius: 0 0 8px 8px;">
+                    <p style="margin: 0;">© 2024 Anantsoft Computing</p>
+                    <p style="margin: 10px 0;">1 C Satyam Apartment, Vishwas Colony Alkapuri, Vadodara - 390007</p>
+                    <p style="margin: 10px 0;">
+                        <a href="{{ unsubscribe_link }}" style="color: #ffffff;">Unsubscribe</a> |
+                        <a href="{{ privacy_policy }}" style="color: #ffffff;">Privacy Policy</a>
+                    </p>
+                </td>
+            </tr>
+        </table>
+    </center>
+</body>
+</html>
