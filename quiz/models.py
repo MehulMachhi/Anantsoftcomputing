@@ -9,7 +9,7 @@ class Survey(models.Model):
         ('35_44', '35-44'),
         ('45_54', '45-54'),
         ('55_64', '55-64'),
-        ('65_ABOVE', '65 and Above'),
+        ('65_ABOVE', '65 and above'),
     ]
     
     LOCATION_CHOICES = [
@@ -26,29 +26,31 @@ class Survey(models.Model):
     
     age_group = models.CharField(max_length=20, choices=AGE_GROUP_CHOICES, null=True,blank=True)
     location = models.CharField(max_length=20, choices=LOCATION_CHOICES, null=True,blank=True)
-    gender_identity = models.CharField(max_length=10, choices=GENDER_CHOICES, null=True,blank=True)
-    state_union_territory = models.CharField(max_length=100, null=True,blank=True)
+    gender_identity = models.CharField(max_length=10, choices=GENDER_CHOICES, null=True,blank=True,
+        verbose_name="Which of the following best describes your gender identity? Please select all that apply.")
+    state_union_territory = models.CharField(max_length=100, null=True,blank=True, 
+        verbose_name="State/Union Territory : (Please specify)")
 
     EDUCATION_CHOICES = [
-        ('NO_FORMAL_EDUCATION', 'No Formal Education'),
-        ('PRIMARY_EDUCATION', 'Primary Education'),
-        ('SECONDARY_EDUCATION', 'Secondary Education'),
-        ('HIGHER_SECONDARY_EDUCATION', 'Higher Secondary Education'),
-        ('BACHELORS_DEGREE', 'Bachelors Degree'),
-        ('MASTERS_OR_HIGHER', 'Masters Degree or Higher'),
+        ('NO_FORMAL_EDUCATION', 'No formal education'),
+        ('PRIMARY_EDUCATION', 'Primary education'),
+        ('SECONDARY_EDUCATION', 'Secondary education'),
+        ('HIGHER_SECONDARY_EDUCATION', 'Higher secondary education'),
+        ('BACHELORS_DEGREE', "Bachelor's degree"),
+        ('MASTERS_OR_HIGHER', "Master's degree or higher"),
     ]
 
     FAMILIARITY_CHOICES = [
-        ('VERY_FAMILIAR', 'Very Familiar'),
-        ('SOMEWHAT_FAMILIAR', 'Somewhat Familiar'),
-        ('NOT_VERY_FAMILIAR', 'Not Very Familiar'),
-        ('NOT_AT_ALL_FAMILIAR', 'Not at All Familiar'),
+        ('VERY_FAMILIAR', 'Very familiar'),
+        ('SOMEWHAT_FAMILIAR', 'Somewhat familiar'),
+        ('NOT_VERY_FAMILIAR', 'Not very familiar'),
+        ('NOT_AT_ALL_FAMILIAR', 'Not at all familiar'),
     ]
 
     VIOLENCE_FORMS_CHOICES = [
-        ('PHYSICAL_ASSAULT', 'Physical Assault (e.g., hitting, kicking, pushing)'),
-        ('SEXUAL_ASSAULT', 'Sexual Assault or Rape'),
-        ('VERBAL_ABUSE', 'Verbal Abuse or Name-calling'),
+        ('PHYSICAL_ASSAULT', 'Physical assault (e.g., hitting, kicking, pushing)'),
+        ('SEXUAL_ASSAULT', 'Sexual assault or rape'),
+        ('VERBAL_ABUSE', 'Verbal abuse or name-calling'),
         ('CONTROLLING_BEHAVIOR', 'Controlling Behavior (e.g., isolating from friends/family, controlling finances)'),
         ('STALKING', 'Stalking or Persistent Unwanted Attention'),
         ('ONLINE_HARASSMENT', 'Online Harassment or Cyberbullying'),
@@ -59,9 +61,12 @@ class Survey(models.Model):
     ]
 
     education_level = models.CharField(max_length=50, choices=EDUCATION_CHOICES, blank=True, null=True)
-    familiarity_with_violence = models.CharField(max_length=50, choices=FAMILIARITY_CHOICES, blank=True, null=True)
-    witnessed_violence = models.CharField(max_length=50, choices=[('YES', 'Yes'), ('NO', 'No'), ('PREFER_NOT_TO_SAY', 'Prefer not to say')], blank=True, null=True)
-    forms_of_violence = models.CharField(max_length=50, choices=VIOLENCE_FORMS_CHOICES, blank=True, null=True)
+    familiarity_with_violence = models.CharField(max_length=50, choices=FAMILIARITY_CHOICES, blank=True, null=True,
+        verbose_name= "Are you familiar with the term violence against women?")
+    witnessed_violence = models.CharField(max_length=50, choices=[('YES', 'Yes'), ('NO', 'No'), ('PREFER_NOT_TO_SAY', 'Prefer not to say')], blank=True, null=True,
+        verbose_name="Have you ever witnessed or experienced any form of violence against women?")
+    forms_of_violence = models.CharField(max_length=50, choices=VIOLENCE_FORMS_CHOICES, blank=True, null=True,
+        verbose_name="Which of the following do you consider to be forms of violence against women?")
 
     COMMONNESS_CHOICES = [
         ('VERY_COMMON', 'Very Common'),

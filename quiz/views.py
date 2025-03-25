@@ -1,3 +1,10 @@
 from django.shortcuts import render
+from rest_framework.generics import ListCreateAPIView
+from .models import Survey
+from .serializers import SurveySerializer
 
-# Create your views here.
+class SurveyListCreateAPIView(ListCreateAPIView):
+    queryset = Survey.objects.all()
+    serializer_class = SurveySerializer
+
+

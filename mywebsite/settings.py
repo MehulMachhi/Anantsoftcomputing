@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-jnj=)39ya0k6h)wqg0$ivpy7=w*6+6e-z484+t^%s(sq3(d_6w'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ["*"]
 
@@ -177,13 +177,28 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = '/home/ananxsab/public_html/ascbackend/static'
-STATICFILES_DIRS = [BASE_DIR / 'static']
+# STATIC_URL = '/static/'
+# STATIC_ROOT = '/static'
+# STATICFILES_DIRS = [BASE_DIR / 'static']
 
-# Media files
+# # Media files
+# MEDIA_URL = '/media/'
+# MEDIA_ROOT = '/media/'
+
+import os
+from pathlib import Path
+
+# Base directory
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# Static files settings
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [BASE_DIR / "static"]
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+# Media files settings
 MEDIA_URL = '/media/'
-MEDIA_ROOT = '/home/ananxsab/public_html/media/'
+MEDIA_ROOT = BASE_DIR / "media"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field

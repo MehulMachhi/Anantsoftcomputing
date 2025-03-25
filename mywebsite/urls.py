@@ -23,15 +23,19 @@ admin.site.site_header = "ASC"
 admin.site.site_title = "ASC"
 admin.site.index_title = "ASC"
 
-
-urlpatterns = ([
+urlpatterns = [
     path('admin/', admin.site.urls),
-    path('api/website/', include('website.urls')),# Add this line
+    path('api/website/', include('website.urls')),
     path('api/services/', include('Services.urls')),
     path('api/portfolio/', include('Portfolio.urls')),
     path('api/contact/', include('Contact.urls')),
     path('api/career/', include('Career.urls')),
     path('api/blogs/', include('Blogs.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
-    path('api/master/', include('website_Master.urls')),] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT))
+    path('api/master/', include('website_Master.urls')),
+    path('api/quiz/', include('quiz.urls')),
+]
 
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
