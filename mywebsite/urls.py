@@ -33,7 +33,6 @@ urlpatterns = [
     path('api/blogs/', include('Blogs.urls')),
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('api/master/', include('website_Master.urls')),
-    path('api/quiz/', include('quiz.urls')),
 ]
 
 if settings.DEBUG:

@@ -50,7 +50,6 @@ INSTALLED_APPS = [
     'Career',
     'Blogs',
     'django_filters',
-    'quiz',
 ]
 
 MIDDLEWARE = [
